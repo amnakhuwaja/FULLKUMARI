@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine? 💌</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Floating hearts background -->
+  <div class="hearts">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <main class="wrap">
+
+    <section class="card">
+      <p class="mini">💗 A little question for you</p>
+
+      <!-- <h1>
+        FULLKUMARI <br>You be my <span>Valentine</span>?
+      </h1> -->
+      <h1>
+  <span>FULLKUMARI <br> </span> you be my Valentine?
+</h1>
+
+
+      <p class="text">
+        I don’t want anything fancy…  
+        I just want you. 🌙✨
+      </p>
+
+      <div class="buttons">
+        <a href="#yes" class="btn yes" id="yesBtn">Yes 💘</a>
+
+       <a href="#no" class="btn no" id="noBtn">No 🙈</a>
+      </div>
+
+      <p class="hint">
+        (Hover the buttons 😌)
+      </p>
+    </section>
+
+    <!-- Hidden cute message -->
+    <section class="popup" id="yes">
+      <div class="popup-card">
+        <h2>Yayyy! 🥹💖</h2>
+        <p>
+          You just made my whole day.  
+          Happy Valentine’s, my FULLKUMARI JANUU🌹
+        </p>
+        <a href="#" class="close">Close</a>
+      </div>
+    </section>
+
+    <section class="popup" id="no">
+      <div class="popup-card">
+        <h2>Wait… 😭</h2>
+        <p>
+          That’s illegal.  
+          Try again please 😌💗
+        </p>
+        <a href="#" class="close">Okay</a>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+
+<script>
+  const yesBtn = document.getElementById("yesBtn");
+
+  function createConfetti() {
+    const colors = ["#FF4FD8", "#FF2F6D", "#FFD700", "#00FFFF", "#FF6A00"];
+    for (let i = 0; i < 120; i++) {
+      const confetti = document.createElement("div");
+      confetti.style.position = "fixed";
+      confetti.style.width = Math.random() * 8 + 4 + "px";
+      confetti.style.height = Math.random() * 8 + 4 + "px";
+      confetti.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+      confetti.style.top = "-10px";
+      confetti.style.opacity = Math.random();
+      confetti.style.zIndex = 9999;
+      confetti.style.borderRadius = "50%";
+      confetti.style.pointerEvents = "none";
+      confetti.style.transform = `rotate(${Math.random()*360}deg)`;
+      confetti.style.animation = `fall ${2 + Math.random()*2}s linear forwards`;
+
+      document.body.appendChild(confetti);
+
+      // Remove after animation
+      confetti.addEventListener("animationend", () => {
+        confetti.remove();
+      });
+    }
+  }
+
+  yesBtn.addEventListener("click", (e) => {
+    // Confetti trigger
+    createConfetti();
+    // Popup will still appear via your existing href="#yes"
+  });
+</script>
+
+</html>
